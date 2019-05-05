@@ -39,20 +39,9 @@ places = new google.maps.places.PlacesService(map);
 
 autocomplete.addListener('place_changed', onPlaceChanged);
 }
-function onPlaceChanged() {
-    var place = autocomplete.getPlace();
-    if (place.geometry) {
-        map.panTo(place.geometry.location);
-        map.setZoom(14);
-        search();
-    }
-    else {
-        document.getElementById('autocomplete').placeholder = 'Enter a City!'
-    };
-}
 // Search for places in the selected city, within the viewport of the map.
 function search() {
-    var selectType = document.getElementById("selectType");
+    var selectType = document.getElementById("selectType").value;
     var search = {
         bounds: map.getBounds(),
         types: [selectType]
@@ -65,10 +54,10 @@ function search() {
             // Create a marker for each place found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
-               if (selectType == "museum") {
-                   // Icon??
+               if (selectType == 'museum') {
+                   MARKER_PATH = "http://cdn.onlinewebfonts.com/svg/img_465542.png"
                }
-               else if (selectType == "zoo") {
+               else if (selectType == 'zoo') {
                    // icon??
                }
                else if (selectType == "amusement_park") {
@@ -92,6 +81,17 @@ function search() {
             }
         }
     });
+}
+function onPlaceChanged() {
+    var place = autocomplete.getPlace();
+    if (place.geometry) {
+        map.panTo(place.geometry.location);
+        map.setZoom(14);
+        search();
+    }
+    else {
+        document.getElementById('autocomplete').placeholder = 'Enter a City!'
+    };
 }
 
 function clearMarkers() {
