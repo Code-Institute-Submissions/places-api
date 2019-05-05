@@ -41,6 +41,6 @@ function initMap() {
         search();
     }
 }
-
+// Search Function Goes Here (.get element by id ... and then run a for loop for types dont forget to include icons )
 
 }
