@@ -1,6 +1,7 @@
 var map;
 var places;
 var infoWindow;
+var search;
 var autocomplete;
 var markers = [];
 var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
@@ -44,7 +45,8 @@ function search() {
     var selectType = document.getElementById("selectType").value;
     var search = {
         bounds: map.getBounds(),
-        types: [selectType]
+        types: [selectType],
+        
     // loop for different places goes down here 
     };
     places.nearbySearch(search, function(results, status) {
@@ -64,6 +66,10 @@ function search() {
                    
                }
                
+               document.getElementById("selectType").addEventListener('change', clearMarkers);
+               document.getElementById("selectType").addEventListener('change', clearResults);
+               
+               
                var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
                var markerIcon = MARKER_PATH + markerLetter + '.png';
                 // Use marker animation to drop the icons incrementally on the map.
@@ -82,6 +88,7 @@ function search() {
         }
     });
 }
+   document.getElementById("selectType").addEventListener('change', search);
 function onPlaceChanged() {
     var place = autocomplete.getPlace();
     if (place.geometry) {
