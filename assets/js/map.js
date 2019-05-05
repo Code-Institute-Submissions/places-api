@@ -75,7 +75,8 @@ function search() {
                    
                }
                
-               
+               var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+               var markerIcon = MARKER_PATH + markerLetter + '.png';
                 // Use marker animation to drop the icons incrementally on the map.
                 markers[i] = new google.maps.Marker({
                     position: results[i].geometry.location,
