@@ -100,6 +100,8 @@ function onPlaceChanged() {
         document.getElementById('autocomplete').placeholder = 'Enter a City!'
     };
 }
+document.getElementById("autocomplete").addEventListener('keypress', clearMarkers);
+document.getElementById("autocomplete").addEventListener('keypress', clearResults);
 
 function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {
