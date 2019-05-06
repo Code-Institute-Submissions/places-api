@@ -4,6 +4,7 @@ var infoWindow;
 var search;
 var autocomplete;
 var markers = [];
+var markerIcon;
 var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 
@@ -56,24 +57,67 @@ function search() {
             // Create a marker for each place found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
-                if (selectType == 'museum') {
-                    markerIcon = "http://cdn.onlinewebfonts.com/svg/img_465542.png"
+
+                if (selectType == 'country') {
+                    document.getElementById("selectType").addEventListener('enter', clearMarkers);
+                    document.getElementById("selectType").addEventListener('enter', clearResults);
+                }
+                else if (selectType == 'museum') {
+                    markerIcon = "./assets/images/icons/museum.png"
                 }
                 else if (selectType == 'zoo') {
-                    // icon??
+                    markerIcon = "./assets/images/icons/zoo.png"
                 }
                 else if (selectType == "amusement_park") {
-
+                    markerIcon = "./assets/images/icons/amusement-park.png"
+                }
+                else if (selectType == "art_gallery") {
+                    markerIcon = "./assets/images/icons/art-gallery.png"
+                }
+                else if (selectType == "night_club") {
+                    markerIcon = "./assets/images/icons/night-club.png"
+                }
+                else if (selectType == "campground") {
+                    markerIcon = "./assets/images/icons/camp-ground.png"
+                }
+                else if (selectType == "lodging") {
+                    markerIcon = "./assets/images/icons/hotel.png"
+                }
+                else if (selectType == "restaurant") {
+                    markerIcon = "./assets/images/icons/restaurant.png"
+                }
+                else if (selectType == "meal_takeaway") {
+                    markerIcon = "./assets/images/icons/takeaway.png"
+                }
+                else if (selectType == "cafe") {
+                    markerIcon = "./assets/images/icons/coffee.png"
+                }
+                else if (selectType == "bar") {
+                    markerIcon = "./assets/images/icons/bar.png"
+                }
+                else if (selectType == "airport") {
+                    markerIcon = "./assets/images/icons/airport.png"
+                }
+                else if (selectType == "bus_station") {
+                    markerIcon = "./assets/images/icons/bus.png"
+                }
+                else if (selectType == "train_station") {
+                    markerIcon = "./assets/images/icons/train.png"
+                }
+                else if (selectType == "car_rental") {
+                    markerIcon = "./assets/images/icons/carrental.png"
                 }
 
-
-                var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-                var markerIcon = MARKER_PATH + markerLetter + '.png';
+                // old markers (Delete when finished )
+                /* var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+                 var markerIcon = MARKER_PATH + markerLetter + '.png';*/
                 // Use marker animation to drop the icons incrementally on the map.
                 markers[i] = new google.maps.Marker({
                     position: results[i].geometry.location,
                     animation: google.maps.Animation.DROP,
-                    icon: markerIcon
+                    icon: {
+                        url: markerIcon
+                    }
                 });
                 // If the user clicks a place marker, show the details of that place
                 // in an info window.
@@ -121,8 +165,8 @@ function dropMarker(i) {
 
 function addResult(result, i) {
     var results = document.getElementById('results');
-    var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-    var markerIcon = MARKER_PATH + markerLetter + '.png';
+    // var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+    //    var markerIcon = MARKER_PATH + markerLetter + '.png';
 
     var tr = document.createElement('tr');
     tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
@@ -167,6 +211,7 @@ function showInfoWindow() {
 
 // Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
+
     document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
         'src="' + place.icon + '"/>';
     document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
