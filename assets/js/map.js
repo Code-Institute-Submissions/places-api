@@ -48,6 +48,9 @@ function search() {
         bounds: map.getBounds(),
         types: [selectType],
     };
+    if (selectType == 'noSelection'){
+        return false;
+    }
     places.nearbySearch(search, function(results, status) {
         var iconPath = "./assets/images/icons/"
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -56,69 +59,54 @@ function search() {
             // Create a marker for each place found.
             for (var i = 0; i < results.length; i++) {
                 // Country Does not return anything (as intended) fix with a default value 
-                if (selectType == 'country') {
-                    document.getElementById("selectType").addEventListener('enter', clearMarkers);
-                    document.getElementById("selectType").addEventListener('enter', clearResults);
+                if (selectType == 'noSelection') {
+                  document.getElementById("selectType").addEventListener('enter', clearMarkers);
+                  document.getElementById("selectType").addEventListener('enter', clearResults);
                 }
                 else if (selectType == 'museum') {
                     markerIcon = iconPath + "museum.png"
-                 //   markerIcon = "./assets/images/icons/museum.png"
                 }
                 else if (selectType == 'zoo') {
                     markerIcon = iconPath + "zoo.png"
-                   // markerIcon = "./assets/images/icons/zoo.png"
                 }
                 else if (selectType == "amusement_park") {
-                    markerIcon = iconPath + "amusement_park.png"
-                   // markerIcon = "./assets/images/icons/amusement-park.png"
+                    markerIcon = iconPath + "amusement-park.png"
                 }
                 else if (selectType == "art_gallery") {
                     markerIcon = iconPath + "art-gallery.png"
-                   // markerIcon = "./assets/images/icons/art-gallery.png"
                 }
                 else if (selectType == "night_club") {
                     markerIcon = iconPath + "night-club.png"
-                    // markerIcon = "./assets/images/icons/night-club.png"
                 }
                 else if (selectType == "campground") {
                     markerIcon = iconPath + "camp-ground.png"
-                   // markerIcon = "./assets/images/icons/camp-ground.png"
                 }
                 else if (selectType == "lodging") {
                     markerIcon = iconPath + "hotel.png"
-                   // markerIcon = "./assets/images/icons/hotel.png"
                 }
                 else if (selectType == "restaurant") {
                     markerIcon = iconPath + "restaurant.png"
-                  //  markerIcon = "./assets/images/icons/restaurant.png"
                 }
                 else if (selectType == "meal_takeaway") {
                     markerIcon = iconPath + "takeaway.png"
-                  //  markerIcon = "./assets/images/icons/takeaway.png"
                 }
                 else if (selectType == "cafe") {
                     markerIcon = iconPath + "coffee.png"
-                  //  markerIcon = "./assets/images/icons/coffee.png"
                 }
                 else if (selectType == "bar") {
                     markerIcon = iconPath + "bar.png"
-                 //   markerIcon = "./assets/images/icons/bar.png"
                 }
                 else if (selectType == "airport") {
                     markerIcon = iconPath + "airport.png"
-                  //  markerIcon = "./assets/images/icons/airport.png"
                 }
                 else if (selectType == "bus_station") {
                     markerIcon = iconPath + "bus.png"
-                  //  markerIcon = "./assets/images/icons/bus.png"
                 }
                 else if (selectType == "train_station") {
                     markerIcon = iconPath + "train.png"
-                 //   markerIcon = "./assets/images/icons/train.png"
                 }
                 else if (selectType == "car_rental") {
                     markerIcon = iconPath + "carrental.png"
-                //    markerIcon = "./assets/images/icons/carrental.png"
                 }
                 // old markers (Delete when finished )
                 /* var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
@@ -153,11 +141,15 @@ function onPlaceChanged() {
         search();
     }
     else {
+        clearMarkers,
+        clearResults,
         document.getElementById('autocomplete').placeholder = 'Enter a City!'
     };
 }
-document.getElementById("autocomplete").addEventListener('enter', clearMarkers);
-document.getElementById("autocomplete").addEventListener('enter', clearResults);
+// add listeners so user can browse the map without changing selection type
+document.getElementById("autocomplete").addEventListener('change', clearMarkers);
+document.getElementById("autocomplete").addEventListener('change', clearResults);
+document.getElementById("autocomplete").addEventListener('change', search);
 
 function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {
