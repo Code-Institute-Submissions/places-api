@@ -47,67 +47,79 @@ function search() {
     var search = {
         bounds: map.getBounds(),
         types: [selectType],
-
-        // loop for different places goes down here 
     };
     places.nearbySearch(search, function(results, status) {
+        var iconPath = "./assets/images/icons/"
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             clearResults();
             clearMarkers();
-            // Create a marker for each place found, and
-            // assign a letter of the alphabetic to each marker icon.
+            // Create a marker for each place found.
             for (var i = 0; i < results.length; i++) {
-
+                // Country Does not return anything (as intended) fix with a default value 
                 if (selectType == 'country') {
                     document.getElementById("selectType").addEventListener('enter', clearMarkers);
                     document.getElementById("selectType").addEventListener('enter', clearResults);
                 }
                 else if (selectType == 'museum') {
-                    markerIcon = "./assets/images/icons/museum.png"
+                    markerIcon = iconPath + "museum.png"
+                 //   markerIcon = "./assets/images/icons/museum.png"
                 }
                 else if (selectType == 'zoo') {
-                    markerIcon = "./assets/images/icons/zoo.png"
+                    markerIcon = iconPath + "zoo.png"
+                   // markerIcon = "./assets/images/icons/zoo.png"
                 }
                 else if (selectType == "amusement_park") {
-                    markerIcon = "./assets/images/icons/amusement-park.png"
+                    markerIcon = iconPath + "amusement_park.png"
+                   // markerIcon = "./assets/images/icons/amusement-park.png"
                 }
                 else if (selectType == "art_gallery") {
-                    markerIcon = "./assets/images/icons/art-gallery.png"
+                    markerIcon = iconPath + "art-gallery.png"
+                   // markerIcon = "./assets/images/icons/art-gallery.png"
                 }
                 else if (selectType == "night_club") {
-                    markerIcon = "./assets/images/icons/night-club.png"
+                    markerIcon = iconPath + "night-club.png"
+                    // markerIcon = "./assets/images/icons/night-club.png"
                 }
                 else if (selectType == "campground") {
-                    markerIcon = "./assets/images/icons/camp-ground.png"
+                    markerIcon = iconPath + "camp-ground.png"
+                   // markerIcon = "./assets/images/icons/camp-ground.png"
                 }
                 else if (selectType == "lodging") {
-                    markerIcon = "./assets/images/icons/hotel.png"
+                    markerIcon = iconPath + "hotel.png"
+                   // markerIcon = "./assets/images/icons/hotel.png"
                 }
                 else if (selectType == "restaurant") {
-                    markerIcon = "./assets/images/icons/restaurant.png"
+                    markerIcon = iconPath + "restaurant.png"
+                  //  markerIcon = "./assets/images/icons/restaurant.png"
                 }
                 else if (selectType == "meal_takeaway") {
-                    markerIcon = "./assets/images/icons/takeaway.png"
+                    markerIcon = iconPath + "takeaway.png"
+                  //  markerIcon = "./assets/images/icons/takeaway.png"
                 }
                 else if (selectType == "cafe") {
-                    markerIcon = "./assets/images/icons/coffee.png"
+                    markerIcon = iconPath + "coffee.png"
+                  //  markerIcon = "./assets/images/icons/coffee.png"
                 }
                 else if (selectType == "bar") {
-                    markerIcon = "./assets/images/icons/bar.png"
+                    markerIcon = iconPath + "bar.png"
+                 //   markerIcon = "./assets/images/icons/bar.png"
                 }
                 else if (selectType == "airport") {
-                    markerIcon = "./assets/images/icons/airport.png"
+                    markerIcon = iconPath + "airport.png"
+                  //  markerIcon = "./assets/images/icons/airport.png"
                 }
                 else if (selectType == "bus_station") {
-                    markerIcon = "./assets/images/icons/bus.png"
+                    markerIcon = iconPath + "bus.png"
+                  //  markerIcon = "./assets/images/icons/bus.png"
                 }
                 else if (selectType == "train_station") {
-                    markerIcon = "./assets/images/icons/train.png"
+                    markerIcon = iconPath + "train.png"
+                 //   markerIcon = "./assets/images/icons/train.png"
                 }
                 else if (selectType == "car_rental") {
-                    markerIcon = "./assets/images/icons/carrental.png"
+                    markerIcon = iconPath + "carrental.png"
+                //    markerIcon = "./assets/images/icons/carrental.png"
                 }
-
                 // old markers (Delete when finished )
                 /* var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
                  var markerIcon = MARKER_PATH + markerLetter + '.png';*/
@@ -137,15 +149,15 @@ function onPlaceChanged() {
     var place = autocomplete.getPlace();
     if (place.geometry) {
         map.panTo(place.geometry.location);
-        map.setZoom(14);
+        map.setZoom(13);
         search();
     }
     else {
         document.getElementById('autocomplete').placeholder = 'Enter a City!'
     };
 }
-document.getElementById("autocomplete").addEventListener('keypress', clearMarkers);
-document.getElementById("autocomplete").addEventListener('keypress', clearResults);
+document.getElementById("autocomplete").addEventListener('enter', clearMarkers);
+document.getElementById("autocomplete").addEventListener('enter', clearResults);
 
 function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {
@@ -212,7 +224,7 @@ function showInfoWindow() {
 // Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
 
-    document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
+    document.getElementById('iw-icon').innerHTML = '<img class="resultIcon" ' +
         'src="' + place.icon + '"/>';
     document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
         '">' + place.name + '</a></b>';
