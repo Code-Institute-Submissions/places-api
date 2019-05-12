@@ -5,7 +5,6 @@ var search;
 var autocomplete;
 var markers = [];
 var markerIcon;
-var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 
 
@@ -108,10 +107,7 @@ function search() {
                 else if (selectType == "car_rental") {
                     markerIcon = iconPath + "carrental.png"
                 }
-                // old markers (Delete when finished )
-                /* var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-                 var markerIcon = MARKER_PATH + markerLetter + '.png';*/
-                // Use marker animation to drop the icons incrementally on the map.
+                // Use marker animation to drop the icons on the map.
                 markers[i] = new google.maps.Marker({
                     position: results[i].geometry.location,
                     animation: google.maps.Animation.DROP,
@@ -127,8 +123,16 @@ function search() {
                 addResult(results[i], i);
             }
         }
+          else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+            clearResults();
+            clearMarkers();
+            //Message if the request returns no results
+            document.getElementById("results").innerHTML = "Ooops!! It seems like this place doesn't have what we are looking for.";
+         
+        }
     });
 }
+// add listeners so user can browse the map without changing the city 
 document.getElementById("selectType").addEventListener('change', clearMarkers);
 document.getElementById("selectType").addEventListener('change', clearResults);
 document.getElementById("selectType").addEventListener('change', search);
@@ -141,8 +145,6 @@ function onPlaceChanged() {
         search();
     }
     else {
-        clearMarkers,
-        clearResults,
         document.getElementById('autocomplete').placeholder = 'Enter a City!'
     };
 }
@@ -159,7 +161,6 @@ function clearMarkers() {
     }
     markers = [];
 }
-
 
 function dropMarker(i) {
     return function() {
@@ -199,8 +200,8 @@ function clearResults() {
     }
 }
 
-// Get the place details for a place. Show the information in an info window,
-// anchored on the marker for the place that the user selected.
+// Get details for a place. Show the information in an info window,
+// anchored on the marker for the place that the user has selected.
 function showInfoWindow() {
     var marker = this;
     places.getDetails({ placeId: marker.placeResult.place_id },
