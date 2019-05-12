@@ -34,13 +34,10 @@
 
 
 
-
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
-    /* Optional: Makes the sample page fill the window. */
-
-    table {
+    #table {
         font-size: 12px;
     }
 
@@ -56,7 +53,6 @@
     }
 
 
-    #locationField {}
 
    
 
@@ -80,7 +76,17 @@
         border-collapse: collapse;
         width: 240px;
     }
-
+    .description {
+    display:none;
+    position:absolute;
+    border:1px solid #000;
+    width:50px;
+    height:20px;
+    }
+    .iw-table-row:hover~.description{
+    display: block;
+}
+ 
     #rating {
         font-size: 13px;
         font-family: Arial Unicode MS;
