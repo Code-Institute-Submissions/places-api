@@ -47,7 +47,7 @@ function search() {
         bounds: map.getBounds(),
         types: [selectType],
     };
-    if (selectType == 'noSelection'){
+    if (selectType == 'noSelection') {
         return false;
     }
     places.nearbySearch(search, function(results, status) {
@@ -57,12 +57,8 @@ function search() {
             clearMarkers();
             // Create a marker for each place found.
             for (var i = 0; i < results.length; i++) {
-                // Country Does not return anything (as intended) fix with a default value 
-                if (selectType == 'noSelection') {
-                  document.getElementById("selectType").addEventListener('enter', clearMarkers);
-                  document.getElementById("selectType").addEventListener('enter', clearResults);
-                }
-                else if (selectType == 'museum') {
+              
+                 if (selectType == 'museum') {
                     markerIcon = iconPath + "museum.png"
                 }
                 else if (selectType == 'zoo') {
@@ -123,12 +119,11 @@ function search() {
                 addResult(results[i], i);
             }
         }
-          else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+        else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
             clearResults();
             clearMarkers();
             //Message if the request returns no results
-            document.getElementById("results").innerHTML = "Ooops!! It seems like this place doesn't have what we are looking for.";
-         
+            $('#myModal').modal('show');
         }
     });
 }
@@ -217,8 +212,8 @@ function buildIWContent(place) {
     document.getElementById('iw-icon').innerHTML = '<img class="resultIcon" ' +
         'src="' + place.icon + '"/>';
     document.getElementById('iw-url').innerHTML = '<b><a  data-toggle="tooltip" title="Open In Google Maps" href="' + place.url +
-        '">' + place.name +' </a></b>';
- 
+        '">' + place.name + ' </a></b>';
+
     document.getElementById('iw-address').textContent = place.vicinity;
 
     if (place.formatted_phone_number) {
@@ -264,6 +259,16 @@ function buildIWContent(place) {
     }
     else {
         document.getElementById('iw-website-row').style.display = 'none';
+
+
+    }
+    if(opening_hours) {
+        var openHours = opening_hours;
+         document.getElementById('iw-openh-row').style.display = '';
+            document.getElementById('openh').textContent = opening_hours;
+    }
+    else {
+        document.getElementById('iw-openh-row').style.display = 'none';
 
 
     }
