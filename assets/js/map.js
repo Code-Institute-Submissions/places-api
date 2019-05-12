@@ -170,9 +170,6 @@ function dropMarker(i) {
 
 function addResult(result, i) {
     var results = document.getElementById('results');
-    // var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-    //    var markerIcon = MARKER_PATH + markerLetter + '.png';
-
     var tr = document.createElement('tr');
     tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
     tr.onclick = function() {
@@ -219,8 +216,9 @@ function buildIWContent(place) {
 
     document.getElementById('iw-icon').innerHTML = '<img class="resultIcon" ' +
         'src="' + place.icon + '"/>';
-    document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
-        '">' + place.name + '</a></b>';
+    document.getElementById('iw-url').innerHTML = '<b><a  data-toggle="tooltip" title="Open In Google Maps" href="' + place.url +
+        '">' + place.name +' </a></b>';
+ 
     document.getElementById('iw-address').textContent = place.vicinity;
 
     if (place.formatted_phone_number) {
