@@ -57,8 +57,8 @@ function search() {
             clearMarkers();
             // Create a marker for each place found.
             for (var i = 0; i < results.length; i++) {
-              
-                 if (selectType == 'museum') {
+
+                if (selectType == 'museum') {
                     markerIcon = iconPath + "museum.png"
                 }
                 else if (selectType == 'zoo') {
@@ -259,17 +259,22 @@ function buildIWContent(place) {
     }
     else {
         document.getElementById('iw-website-row').style.display = 'none';
-
-
     }
-    if(opening_hours) {
-        var openHours = opening_hours;
-         document.getElementById('iw-openh-row').style.display = '';
-            document.getElementById('openh').textContent = opening_hours;
+    if (place.opening_hours) {
+       
+        var open = document.getElementById("iw-openh-row");
+          $('.iw-openh').remove();
+        for (var i = 0; i < place.opening_hours.weekday_text.length; i++) {
+            // Create element and append to opening_hours_div
+            var content = document.createElement('td');
+            content.className = 'iw-openh';
+            content.innerHTML = place.opening_hours.weekday_text[i];
+            open.appendChild(content);
+        }
+        document.getElementById('iw-openh-row').style.display = '';
+    
     }
-    else {
-        document.getElementById('iw-openh-row').style.display = 'none';
-
-
-    }
+   else {
+       document.getElementById('iw-openh-row').style.display = 'none';
+   }
 }
