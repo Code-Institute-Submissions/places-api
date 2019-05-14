@@ -16,24 +16,21 @@
 
 <body>
     <header>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Sorry We could not find any results at this location!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <p>Sorry We could not find any results at this location!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-        
+            </div>
+        </div>
         <!--Modal End--->
         <div class="container-fluid bg-primary">
             <div class="row">
@@ -43,9 +40,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            </div>
+            <!--Another Container-->
+          <div class="container bg-light">
+                <div class="row">
                 <!-- Search Options-->
-                <div class=" col-sm-3">
+                 <div id="locationField" class="col-sm-3 location-field pb-2 pt-2">
+                    <input id="autocomplete" placeholder="Enter a city" type="text" />
+                </div>
+                <div class="col-sm-3 pb-2 pt-2">
                     <select class="select-type" id="selectType">
                           <option selected disabled value="noSelection">Select Option </option>
                         <optgroup label="Local Atractions">
@@ -73,62 +76,57 @@
                         </optgroup>
                 </select>
                 </div>
-                <div id="locationField" class="col-sm-3 location-field">
-                    <input id="autocomplete" placeholder="Enter a city" type="text" />
+            </div>  
+          </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row">
+                <!-- Map -->
+                <div class="col-sm-10">
+                    <div id="map"></div>
+                </div>
+                <!-- Results-->
+                <div class="col-sm-2">
+                    <div id="listing">
+                        <table id="resultsTable">
+                            <tbody id="results"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        </header>
-        <section>
-            <div class="container">
-                <div class="row">
-                    <!-- Map -->
-                    <div class="col-sm-8">
-                        <div id="map"></div>
-                    </div>
-                    <!-- Results-->
-                    <div class="col-sm-4">
-                        <div id="listing">
-                            <table id="resultsTable">
-                                <tbody id="results"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        <!-- Marker Information-->
+        <div style="display: none">
+            <div id="info-content">
+                <table>
+                    <tr id="iw-url-row" class="iw_table_row">
+                        <td id="iw-icon" class="iw_table_icon"></td>
+                        <td id="iw-url"></td>
+                    </tr>
+                    <tr id="iw-address-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Address:</td>
+                        <td id="iw-address"></td>
+                    </tr>
+                    <tr id="iw-phone-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Telephone:</td>
+                        <td id="iw-phone"></td>
+                    </tr>
+                    <tr id="iw-rating-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Rating:</td>
+                        <td id="iw-rating"></td>
+                    </tr>
+                    <tr id="iw-website-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Website:</td>
+                        <td id="iw-website"></td>
+                    </tr>
+                    <tr id="iw-openh-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Open:</td>
+                    </tr>
+                </table>
             </div>
-            <!-- Marker Information-->
-            <div style="display: none">
-                <div id="info-content">
-                    <table>
-                        <tr id="iw-url-row" class="iw_table_row">
-                            <td id="iw-icon" class="iw_table_icon"></td>
-                            <td id="iw-url"></td>
-                        </tr>
-                        <tr id="iw-address-row" class="iw_table_row">
-                            <td class="iw_attribute_name">Address:</td>
-                            <td id="iw-address"></td>
-                        </tr>
-                        <tr id="iw-phone-row" class="iw_table_row">
-                            <td class="iw_attribute_name">Telephone:</td>
-                            <td id="iw-phone"></td>
-                        </tr>
-                        <tr id="iw-rating-row" class="iw_table_row">
-                            <td class="iw_attribute_name">Rating:</td>
-                            <td id="iw-rating"></td>
-                        </tr>
-                        <tr id="iw-website-row" class="iw_table_row">
-                            <td class="iw_attribute_name">Website:</td>
-                            <td id="iw-website"></td>
-                        </tr>
-                        <tr id="iw-openh-row" class="iw_table_row">
-                            <td class="iw_attribute_name">Open:</td>
-                           <!-- <td id="iw-opnh"></td>-->
-                            
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
     <!-- Javascript-->
     <script type="text/javascript" src="assets/js/map.js"></script>
