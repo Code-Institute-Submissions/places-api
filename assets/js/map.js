@@ -50,6 +50,10 @@ function search() {
     if (selectType == 'noSelection') {
         return false;
     }
+    else if (document.getElementById('autocomplete').value.length == 0){
+        alert("Please enter a City!")
+    }
+    else {
     places.nearbySearch(search, function(results, status) {
         var iconPath = "./assets/images/icons/"
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -125,7 +129,9 @@ function search() {
             //Message if the request returns no results
             $('#myModal').modal('show');
         }
+    
     });
+ }
 }
 // add listeners so user can browse the map without changing the city 
 document.getElementById("selectType").addEventListener('change', clearMarkers);
@@ -251,7 +257,7 @@ function buildIWContent(place) {
         var fullUrl = place.website;
         var website = hostnameRegexp.exec(place.website);
         if (website === null) {
-            website = 'http://' + place.website + '/';
+            website = 'https://' + place.website + '/';
             fullUrl = website;
         }
         document.getElementById('iw-website-row').style.display = '';
@@ -261,9 +267,10 @@ function buildIWContent(place) {
         document.getElementById('iw-website-row').style.display = 'none';
     }
     if (place.opening_hours) {
-       
+
         var open = document.getElementById("iw-openh-row");
-          $('.iw-openh').remove();
+        // if user changes place selection, statement below will clear previous results!
+        $('.iw-openh').remove();
         for (var i = 0; i < place.opening_hours.weekday_text.length; i++) {
             // Create element and append to opening_hours_div
             var content = document.createElement('td');
@@ -272,9 +279,9 @@ function buildIWContent(place) {
             open.appendChild(content);
         }
         document.getElementById('iw-openh-row').style.display = '';
-    
+
     }
-   else {
-       document.getElementById('iw-openh-row').style.display = 'none';
-   }
+    else {
+        document.getElementById('iw-openh-row').style.display = 'none';
+    }
 }
