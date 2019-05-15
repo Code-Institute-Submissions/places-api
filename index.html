@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search Your Holiday Destination</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <!-- Css Link --->
+    <!-- Css Link -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <!-- Fonts-->
+    <!-- Fonts--->
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!-- Bootstrap 4.3.1--->
+    <!-- Bootstrap 4.3.1-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Font Awesome-->   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 
 <body>
-    <header>
+    <header class="bg-dark-grey">
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
-                <!-- Modal content-->
+                <!-- Modal content--->
                 <div class="modal-content">
                     <div class="modal-body">
                         <p>Sorry We could not find any results at this location!</p>
@@ -32,19 +34,19 @@
             </div>
         </div>
         <!--Modal End--->
-        <div class="container-fluid bg-primary">
+        <div class="container-fluid bg-dark">
             <div class="row">
-                <div class="col-12">
-                    <ul class="list-inline text-center">
-                        <li class="title">Search your next holiday destination</li>
+                <div class="col-12 title">
+                    <ul class="list-inline">
+                        <li>Search Places<i class="pl-3 fa fa-map-marker" style="color:green"></i></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!--Another Container-->
-        <div class="container bg-light">
+        <!--Another Container--->
+        <div class="container clearfix bg-dark mt-1">
             <div class="row">
-                <!-- Search Options-->
+                <!-- Search Options--->
                 <div id="locationField" class="col-sm-3 location-field pb-2 pt-2">
                     <input id="autocomplete" placeholder="Enter a city" type="text" />
                 </div>
@@ -79,15 +81,15 @@
             </div>
         </div>
     </header>
-    <section>
+    <section class="bg-dark-grey">
         <div class="container">
             <div class="row">
-                <!-- Map -->
-                <div class="col-sm-10">
+                <!-- Map --->
+                <div class="col-md-8 pt-2 pb-2">
                     <div id="map"></div>
                 </div>
                 <!-- Results-->
-                <div class="col-sm-2">
+                <div class="col-12 col-md-4 mt-2 mb-2 result-container">
                     <div id="listing">
                         <table id="resultsTable">
                             <tbody id="results"></tbody>
@@ -96,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <!-- Marker Information-->
+        <!-- Marker Information--->
         <div style="display: none">
             <div id="info-content">
                 <table>
@@ -127,13 +129,16 @@
             </div>
         </div>
     </section>
+    <footer>
+        <div id="empty" class="bg-dark"></div>
+    </footer>
 
-    <!-- Javascript-->
+    <!-- Javascript--->
     <script type="text/javascript" src="assets/js/map.js"></script>
-    <!-- Bootstrap-->
+    <!-- Bootstrap--->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- API Key -->
+    <!-- API Key --->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvusuiGCkNDN2rgnuAfT3fLeIUeiCG74&libraries=places&callback=initMap" async defer></script>
 </body>
 
