@@ -172,7 +172,7 @@ function dropMarker(i) {
 function addResult(result, i) {
     var results = document.getElementById('results');
     var tr = document.createElement('tr');
-    tr.style.backgroundColor = ("rgba(128, 128, 128, 0.5)");//(i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
+    tr.style.backgroundColor =(i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
     tr.onclick = function() {
         google.maps.event.trigger(markers[i], 'click');
     };

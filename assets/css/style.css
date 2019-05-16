@@ -6,7 +6,7 @@
 
     }
 .bg-dark-grey {
-    background-color:red; /* #A9A9A9;*/
+    background-color: #A9A9A9;
 }
     /* Title  */
 
@@ -59,19 +59,24 @@
 
 
     #listing {
-        position: absolute;
+        display:block;
         width: auto;
         height: 600px;
         overflow: auto;
-        top: 0px;
+        
         cursor: pointer;
         overflow-x: hidden;
     }
-
+@media only screen and (max-width: 767px) {
+  #listing {
+    display:none;
+  }
+}
     #resultsTable {
+        display:block;
         border-collapse: collapse;
         width: auto;
-       /* width: 240px;*/
+      
     }
 
     /* Infowindow*/
@@ -105,7 +110,11 @@
         text-align: right;
     }
     
-    
+    .iw-openh {
+        display: block;
+        border-bottom: 1px solid;
+        padding-left: 5px;
+    }
     /*Empty div -- Footer */
     #empty {
         width: 100%;
