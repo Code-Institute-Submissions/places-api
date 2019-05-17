@@ -51,7 +51,8 @@ function search() {
         return false;
     }
     else if (document.getElementById('autocomplete').value.length == 0){
-        alert("Please enter a City!")
+          $('#myModal').modal('show');
+             document.getElementById("show-message").innerHTML = ("Please Enter a City!");
     }
     else {
     places.nearbySearch(search, function(results, status) {
@@ -128,6 +129,7 @@ function search() {
             clearMarkers();
             //Message if the request returns no results
             $('#myModal').modal('show');
+             document.getElementById("show-message").innerHTML = ("Sorry We could not find any results at this location!");
         }
     
     });
