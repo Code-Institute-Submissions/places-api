@@ -90,12 +90,14 @@ This Website is for anyone looking to gather information about places
 -The repository can be found on github at  (https://github.com/toderas/places-api)
 
 -This project has been deployed trough github-pages and can be found at  (https://toderas.github.io/places-api/)
-
+Api Key has been restricted to this link !!!!!!
 
 ##### Acknowledgements ####
 
 	# IMPORTANT # Base code for this project has been imported from google official documentation which can be found at ("https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch") 
 and modified to suit this project's requirements 
+
+
 	/ stackoverflow - for code related issues 
 	/ w3schools for inspiration and code related issues 
 	/ friends and family for usability tests 
