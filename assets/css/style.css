@@ -1,13 +1,15 @@
     html,
     body {
-        height: auto;
+        height: 100%;
         margin: 0;
         padding: 0;
 
     }
-.bg-dark-grey {
-    background-color: #A9A9A9;
-}
+
+    .bg-dark-grey {
+        background-color: #A9A9A9;
+    }
+
     /* Title  */
 
     .title {
@@ -44,12 +46,17 @@
 
     #map {
         width: 100%;
-        height: 600px;
+        height: 800px;
+    }
+     @media only screen and (max-width: 767px) {
+        #map {
+            height: 600px;
+        }
     }
 
     /*Results Table */
+
     .result-container {
-        height: 600px;
         width: auto;
     }
 
@@ -59,24 +66,25 @@
 
 
     #listing {
-        display:block;
+        display: block;
         width: auto;
-        height: 600px;
+        height: 800px;
         overflow: auto;
-        
         cursor: pointer;
         overflow-x: hidden;
     }
-@media only screen and (max-width: 767px) {
-  #listing {
-    display:none;
-  }
-}
+
+    @media only screen and (max-width: 767px) {
+        #listing {
+            display: none;
+        }
+    }
+
     #resultsTable {
-        display:block;
+        display: block;
         border-collapse: collapse;
         width: auto;
-      
+
     }
 
     /* Infowindow*/
@@ -109,14 +117,17 @@
     .iw_table_icon {
         text-align: right;
     }
-    
+
     .iw-openh {
         display: block;
         border-bottom: 1px solid;
         padding-left: 5px;
     }
+
     /*Empty div -- Footer */
+
     #empty {
         width: 100%;
-        height:60px;
+        height: 60px;
     }
+    
