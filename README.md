@@ -1,4 +1,4 @@
-#Place Search Website 
+# Place Search Website 
 
 This Project Focuses on helping visitors finding their next holiday place by providing
 a worldwide range of locations and relevant information about each place selected
@@ -20,7 +20,7 @@ Google Places API
 GIT / GITHUB /GITHUB-pages
 	- used for version controll, code backup and deployment
 
-#Validators
+# Validators
 	- HTML 
 		The Code Passes Trough (https://validator.w3.org/#validate_by_input) w3schools validator
 		 with no errors 
