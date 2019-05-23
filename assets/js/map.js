@@ -37,7 +37,6 @@ function initMap() {
     places = new google.maps.places.PlacesService(map);
 
     // Add a DOM event listener to react when the user selects a new place.
-
     autocomplete.addListener('place_changed', onPlaceChanged);
 }
 // Search for places in the selected city, within the viewport of the map.
@@ -50,90 +49,91 @@ function search() {
     if (selectType == 'noSelection') {
         return false;
     }
-    else if (document.getElementById('autocomplete').value.length == 0){
-          $('#myModal').modal('show');
-             document.getElementById("show-message").innerHTML = ("Please Enter a City!");
+    else if (document.getElementById('autocomplete').value.length == 0) {
+        $('#myModal').modal('show');
+        document.getElementById("show-message").innerHTML = ("Please Enter a City!");
     }
-    else {
-    places.nearbySearch(search, function(results, status) {
-        var iconPath = "./assets/images/icons/"
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            clearResults();
-            clearMarkers();
-            // Create a marker for each place found.
-            for (var i = 0; i < results.length; i++) {
 
-                if (selectType == 'museum') {
-                    markerIcon = iconPath + "museum.png"
-                }
-                else if (selectType == 'zoo') {
-                    markerIcon = iconPath + "zoo.png"
-                }
-                else if (selectType == "amusement_park") {
-                    markerIcon = iconPath + "amusement-park.png"
-                }
-                else if (selectType == "art_gallery") {
-                    markerIcon = iconPath + "art-gallery.png"
-                }
-                else if (selectType == "night_club") {
-                    markerIcon = iconPath + "night-club.png"
-                }
-                else if (selectType == "campground") {
-                    markerIcon = iconPath + "camp-ground.png"
-                }
-                else if (selectType == "lodging") {
-                    markerIcon = iconPath + "hotel.png"
-                }
-                else if (selectType == "restaurant") {
-                    markerIcon = iconPath + "restaurant.png"
-                }
-                else if (selectType == "meal_takeaway") {
-                    markerIcon = iconPath + "takeaway.png"
-                }
-                else if (selectType == "cafe") {
-                    markerIcon = iconPath + "coffee.png"
-                }
-                else if (selectType == "bar") {
-                    markerIcon = iconPath + "bar.png"
-                }
-                else if (selectType == "airport") {
-                    markerIcon = iconPath + "airport.png"
-                }
-                else if (selectType == "bus_station") {
-                    markerIcon = iconPath + "bus.png"
-                }
-                else if (selectType == "train_station") {
-                    markerIcon = iconPath + "train.png"
-                }
-                else if (selectType == "car_rental") {
-                    markerIcon = iconPath + "carrental.png"
-                }
-                // Use marker animation to drop the icons on the map.
-                markers[i] = new google.maps.Marker({
-                    position: results[i].geometry.location,
-                    animation: google.maps.Animation.DROP,
-                    icon: {
-                        url: markerIcon
+    else {
+        places.nearbySearch(search, function(results, status) {
+            var iconPath = "./assets/images/icons/"
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                clearResults();
+                clearMarkers();
+                // Create a marker for each place found.
+                for (var i = 0; i < results.length; i++) {
+
+                    if (selectType == 'museum') {
+                        markerIcon = iconPath + "museum.png"
                     }
-                });
-                // If the user clicks a place marker, show the details of that place
-                // in an info window.
-                markers[i].placeResult = results[i];
-                google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-                setTimeout(dropMarker(i), i * 100);
-                addResult(results[i], i);
+                    else if (selectType == 'zoo') {
+                        markerIcon = iconPath + "zoo.png"
+                    }
+                    else if (selectType == "amusement_park") {
+                        markerIcon = iconPath + "amusement-park.png"
+                    }
+                    else if (selectType == "art_gallery") {
+                        markerIcon = iconPath + "art-gallery.png"
+                    }
+                    else if (selectType == "night_club") {
+                        markerIcon = iconPath + "night-club.png"
+                    }
+                    else if (selectType == "campground") {
+                        markerIcon = iconPath + "camp-ground.png"
+                    }
+                    else if (selectType == "lodging") {
+                        markerIcon = iconPath + "hotel.png"
+                    }
+                    else if (selectType == "restaurant") {
+                        markerIcon = iconPath + "restaurant.png"
+                    }
+                    else if (selectType == "meal_takeaway") {
+                        markerIcon = iconPath + "takeaway.png"
+                    }
+                    else if (selectType == "cafe") {
+                        markerIcon = iconPath + "coffee.png"
+                    }
+                    else if (selectType == "bar") {
+                        markerIcon = iconPath + "bar.png"
+                    }
+                    else if (selectType == "airport") {
+                        markerIcon = iconPath + "airport.png"
+                    }
+                    else if (selectType == "bus_station") {
+                        markerIcon = iconPath + "bus.png"
+                    }
+                    else if (selectType == "train_station") {
+                        markerIcon = iconPath + "train.png"
+                    }
+                    else if (selectType == "car_rental") {
+                        markerIcon = iconPath + "carrental.png"
+                    }
+                    // Use marker animation to drop the icons on the map.
+                    markers[i] = new google.maps.Marker({
+                        position: results[i].geometry.location,
+                        animation: google.maps.Animation.DROP,
+                        icon: {
+                            url: markerIcon
+                        }
+                    });
+                    // If the user clicks a place marker, show the details of that place
+                    // in an info window.
+                    markers[i].placeResult = results[i];
+                    google.maps.event.addListener(markers[i], 'click', showInfoWindow);
+                    setTimeout(dropMarker(i), i * 100);
+                    addResult(results[i], i);
+                }
             }
-        }
-        else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-            clearResults();
-            clearMarkers();
-            //Message if the request returns no results
-            $('#myModal').modal('show');
-             document.getElementById("show-message").innerHTML = ("Sorry We could not find any results at this location!");
-        }
-    
-    });
- }
+            else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+                clearResults();
+                clearMarkers();
+                //Message if the request returns no results
+                $('#myModal').modal('show');
+                document.getElementById("show-message").innerHTML = ("Sorry We could not find any results at this location!");
+            }
+
+        });
+    }
 }
 // add listeners so user can browse the map without changing the city 
 document.getElementById("selectType").addEventListener('change', clearMarkers);
@@ -148,7 +148,15 @@ function onPlaceChanged() {
         search();
     }
     else {
-        document.getElementById('autocomplete').placeholder = 'Enter a City!'
+        if (status == google.maps.GeocoderStatus.OK) {
+      search();
+        }
+        else {
+            clearMarkers();
+            clearResults();
+            alert('Please Enter a Valid City')
+        }
+        /* document.getElementById('autocomplete').placeholder = 'Enter a City!'*/
     };
 }
 // add listeners so user can browse the map without changing selection type
@@ -174,7 +182,7 @@ function dropMarker(i) {
 function addResult(result, i) {
     var results = document.getElementById('results');
     var tr = document.createElement('tr');
-    tr.style.backgroundColor =(i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
+    tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
     tr.onclick = function() {
         google.maps.event.trigger(markers[i], 'click');
     };
@@ -219,7 +227,7 @@ function buildIWContent(place) {
 
     document.getElementById('iw-icon').innerHTML = '<img class="resultIcon" ' +
         'src="' + place.icon + '"/>';
-    document.getElementById('iw-url').innerHTML = '<b><a  data-toggle="tooltip" title="Open In Google Maps" href="' + place.url +
+    document.getElementById('iw-url').innerHTML = '<b><a target="_blank" data-toggle="tooltip" title="Open In Google Maps" href="' + place.url +
         '">' + place.name + ' </a></b>';
 
     document.getElementById('iw-address').textContent = place.vicinity;
@@ -287,3 +295,25 @@ function buildIWContent(place) {
         document.getElementById('iw-openh-row').style.display = 'none';
     }
 }
+
+// Retrieve selection type from json 
+
+   fetch('assets/js/place.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (place) {
+                appendData(place);
+            })
+           .catch(function (err) {
+                console.log('This Shit Fuckes Up My Code: ' + err);
+            });
+        function appendData(place) {
+            var mainContainer = document.getElementById("selectType");
+            for (var i = 0; i < place.length; i++) {
+                var option = document.createElement("option");
+                option.value =  place[i].value;
+                option.innerHTML = '' + place[i].name;
+                mainContainer.appendChild(option);
+            }
+        }
