@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search Your Holiday Destination</title>
-    <!-- Css Link -->
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <!-- Fonts--->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- Bootstrap 4.3.1-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Fonts--->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Css Link -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -30,7 +30,6 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--Modal End--->
@@ -48,12 +47,12 @@
             <div class="row">
                 <!-- Search Options--->
                 <div id="locationField" class="col-11 col-md-4 location-field pb-2 pt-2 mt-3">
-                    <input id="autocomplete" placeholder="Enter a city" type="text" />
+                    <input id="autocomplete" placeholder="Enter a city" type="text"/>
                 </div>
                 <div class="col-12 col-md-4 pb-2 pt-2 mt-3">
                     <select class="select-type" id="selectType">
-                            <option selected disabled value="noSelection">Select Option </option>
-                        <optgroup label="Local Atractions">
+                      <!--  <option selected disabled value="noSelection">Select Option </option>-->
+                        <!--<optgroup label="Local Atractions">
                             <option value="museum">Museum</option>
                             <option value="zoo">Zoo</option>
                             <option value="amusement_park">Amusement Park </option>
@@ -75,7 +74,7 @@
                             <option value="bus_station">Buses</option>
                             <option value="train_station">Trains</option>
                             <option value="car_rental">Car Rental</option>
-                        </optgroup>
+                        </optgroup>-->
                 </select>
                 </div>
             </div>
@@ -89,14 +88,14 @@
                 <div class="col-12 col-md-10 pt-2 pb-2 pr-md-0">
                     <div id="map"></div>
                 </div>
-                 <!--Results table-->
-                    <div class="col-12 col-md-2 pt-2 pb-2 pl-0">
-                     <div id="listing">
+                <!--Results table-->
+                <div class="col-12 col-md-2 pt-2 pb-2 pl-0">
+                    <div id="listing">
                         <table id="resultsTable">
                             <tbody id="results"></tbody>
                         </table>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
         <!-- Marker Information--->
@@ -134,14 +133,15 @@
         <!--Empty Div (User Visual Clue)-->
         <div id="empty" class="bg-dark"></div>
     </footer>
-
     <!-- Javascript--->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/map.js"></script>
-    <!-- Bootstrap--->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- API Key --->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvusuiGCkNDN2rgnuAfT3fLeIUeiCG74&libraries=places&callback=initMap" async defer></script>
+    <!-- Bootstrap--->
+   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
 </body>
 
 </html>
