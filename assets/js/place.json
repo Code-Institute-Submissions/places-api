@@ -1,0 +1,72 @@
+[
+    {
+     "name": "Select Option", 
+     "value": "noSelection",
+     "value": "disabled"
+  },
+  {
+     "name": "Museum", 
+     "value": "museum"
+  },
+  {
+     "name": "Zoo", 
+     "value": "zoo"
+  },
+  {
+     "name": "Amusement Park", 
+     "value": "amusement_park"
+  },
+  {
+     "name": "Art", 
+     "value": "art_gallery"
+  },
+  {
+     "name": "Night Club", 
+     "value": "night_club"
+  },
+  {
+     "name": "Camping", 
+     "value": "campground"
+  },
+  {
+     "name": "Hotel", 
+     "value": "lodging"
+  },
+  {
+     "name": "Restaurant", 
+     "value": "restaurant"
+  },
+  {
+     "name": "Takeaway", 
+     "value": "meal_takeaway"
+  },
+  {
+     "name": "Cafe", 
+     "value": "cafe"
+  },
+  {
+     "name": "Bar", 
+     "value": "bar"
+  },
+  {
+     "name": "Airport", 
+     "value": "airport"
+  },
+  {
+     "name": "Buses", 
+     "value": "bus_station"
+  },
+  {
+     "name": "Trains", 
+     "value": "train_station"
+  },
+  {
+     "name": "Car Rental", 
+     "value": "car_rental"
+  }
+]
+
+
+
+
+
