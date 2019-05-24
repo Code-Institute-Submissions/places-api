@@ -38,6 +38,7 @@ function initMap() {
 
     // Add a DOM event listener to react when the user selects a new place.
     autocomplete.addListener('place_changed', onPlaceChanged);
+    addJson();
 }
 // Search for places in the selected city, within the viewport of the map.
 function search() {
@@ -46,20 +47,22 @@ function search() {
         bounds: map.getBounds(),
         types: [selectType],
     };
+
     if (selectType == 'noSelection') {
         return false;
     }
     else if (document.getElementById('autocomplete').value.length == 0) {
         $('#myModal').modal('show');
         document.getElementById("show-message").innerHTML = ("Please Enter a City!");
+        document.getElementById("selectType").disabled = true;
     }
-
     else {
         places.nearbySearch(search, function(results, status) {
             var iconPath = "./assets/images/icons/"
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 clearResults();
                 clearMarkers();
+                document.getElementById("selectType").disabled = false;
                 // Create a marker for each place found.
                 for (var i = 0; i < results.length; i++) {
 
@@ -131,7 +134,6 @@ function search() {
                 $('#myModal').modal('show');
                 document.getElementById("show-message").innerHTML = ("Sorry We could not find any results at this location!");
             }
-
         });
     }
 }
@@ -145,19 +147,18 @@ function onPlaceChanged() {
     if (place.geometry) {
         map.panTo(place.geometry.location);
         map.setZoom(13);
-        search();
+        clearResults();
+        // next 2 lines will reset json 
+        $("#selectType").empty();
+        addJson();
     }
+
     else {
-        if (status == google.maps.GeocoderStatus.OK) {
-      search();
-        }
-        else {
-            clearMarkers();
-            clearResults();
-            alert('Please Enter a Valid City')
-        }
-        /* document.getElementById('autocomplete').placeholder = 'Enter a City!'*/
-    };
+        $('#myModal').modal('show');
+        document.getElementById("show-message").innerHTML = ("Your Input Is Not Recogised!   Please Try Again");
+        clearMarkers();
+        clearResults();
+    }
 }
 // add listeners so user can browse the map without changing selection type
 document.getElementById("autocomplete").addEventListener('change', clearMarkers);
@@ -186,7 +187,6 @@ function addResult(result, i) {
     tr.onclick = function() {
         google.maps.event.trigger(markers[i], 'click');
     };
-
     var iconTd = document.createElement('td');
     var nameTd = document.createElement('td');
     var icon = document.createElement('img');
@@ -298,22 +298,25 @@ function buildIWContent(place) {
 
 // Retrieve selection type from json 
 
-   fetch('assets/js/place.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (place) {
-                appendData(place);
-            })
-           .catch(function (err) {
-                console.log('This Shit Fuckes Up My Code: ' + err);
-            });
-        function appendData(place) {
-            var mainContainer = document.getElementById("selectType");
-            for (var i = 0; i < place.length; i++) {
-                var option = document.createElement("option");
-                option.value =  place[i].value;
-                option.innerHTML = '' + place[i].name;
-                mainContainer.appendChild(option);
-            }
+function addJson() {
+    fetch('assets/js/place.json')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(place) {
+            appendData(place);
+        })
+        .catch(function(err) {
+            console.log('JSON file says: ' + err);
+        });
+
+    function appendData(place) {
+        var mainContainer = document.getElementById("selectType");
+        for (var i = 0; i < place.length; i++) {
+            var option = document.createElement("option");
+            option.value = place[i].value;
+            option.innerHTML = '' + place[i].name;
+            mainContainer.appendChild(option);
         }
+    }
+}
