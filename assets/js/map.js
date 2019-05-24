@@ -134,6 +134,7 @@ function search() {
                 $('#myModal').modal('show');
                 document.getElementById("show-message").innerHTML = ("Sorry We could not find any results at this location!");
             }
+
         });
     }
 }
@@ -145,25 +146,27 @@ document.getElementById("selectType").addEventListener('change', search);
 function onPlaceChanged() {
     var place = autocomplete.getPlace();
     if (place.geometry) {
+        clearMarkers();
+        clearResults();
         map.panTo(place.geometry.location);
         map.setZoom(13);
-        clearResults();
         // next 2 lines will reset json 
         $("#selectType").empty();
         addJson();
+        document.getElementById("selectType").disabled = false;
     }
 
     else {
-        $('#myModal').modal('show');
-        document.getElementById("show-message").innerHTML = ("Your Input Is Not Recogised!   Please Try Again");
+        /*    $("#selectType").empty();
+         addJson();*/
+        document.getElementById("selectType").disabled = true;
         clearMarkers();
         clearResults();
+        $('#myModal').modal('show');
+        document.getElementById("show-message").innerHTML = ("Your Input Is Not Recogised!   Please Try Again");
+
     }
 }
-// add listeners so user can browse the map without changing selection type
-document.getElementById("autocomplete").addEventListener('change', clearMarkers);
-document.getElementById("autocomplete").addEventListener('change', clearResults);
-document.getElementById("autocomplete").addEventListener('change', search);
 
 function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {

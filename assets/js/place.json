@@ -1,8 +1,7 @@
 [
     {
      "name": "Select Option", 
-     "value": "noSelection",
-     "value": "disabled"
+     "value": "noSelection"
   },
   {
      "name": "Museum", 
