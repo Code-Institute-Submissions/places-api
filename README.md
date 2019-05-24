@@ -45,20 +45,20 @@ This Website is for anyone looking to gather information about places
 
 	- This is a simple one-page aplication with the following features
 
-	/ World map 
-	/ location(city,town,village) search functionality with autocomplete 
-	/ ability to browse trough options and select the type of place user are looking for 
-	/ custom markers for each place type
-	/ on user selection(click marker or item from list) display relevant information about a specific place 
-	/ map controlls (zoom,drag,select)
-	/ 360* street view (where such option is available(some remote locations do not have this feature yet implemented))
-	/ ability to open a certain place in google maps (click on place name in the infowindow)
-	/ different map themes (Map , Satellite)
-	/ full screen map option 
+	- World map 
+	- location(city,town,village) search functionality with autocomplete 
+	- ability to browse trough options and select the type of place user are looking for 
+	- custom markers for each place type
+	- on user selection(click marker or item from list) display relevant information about a specific place 
+	- map controlls (zoom,drag,select)
+	- 360* street view (where such option is available(some remote locations do not have this feature yet implemented))
+	- ability to open a certain place in google maps (click on place name in the infowindow)
+	- different map themes (Map , Satellite)
+	- full screen map option 
 
 
 # Features Left To Implement
-	/ None
+	- None
 
 # TESTING
 
@@ -117,11 +117,8 @@ Api Key has been restricted to this link !!!!!!
 and modified to suit this project's requirements 
 
 
-	/ stackoverflow - for code related issues 
-	/ w3schools for inspiration and code related issues 
-	/ friends and family for usability tests 
-	/ google api documentation for helpining me to understand how it works 
-	/ Antonija Šimic (Mentor) for her continuous support and patience troughout this project!
-
-
-
+	- stackoverflow - for code related issues 
+	- w3schools for inspiration and code related issues 
+	- friends and family for usability tests 
+	- google api documentation for helpining me to understand how it works 
+	- Antonija Šimic (Mentor) for her continuous support and patience troughout this project!
