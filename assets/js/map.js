@@ -58,59 +58,82 @@ function search() {
     }
     else {
         places.nearbySearch(search, function(results, status) {
-            var iconPath = "./assets/images/icons/"
+            var iconPath = "./assets/images/icons/";
+
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 clearResults();
                 clearMarkers();
                 document.getElementById("selectType").disabled = false;
                 // Create a marker for each place found.
                 for (var i = 0; i < results.length; i++) {
+                    // switch starts here 
 
-                    if (selectType == 'museum') {
-                        markerIcon = iconPath + "museum.png"
+                    switch (selectType) {
+                        case 'museum':
+                            markerIcon = iconPath + 'museum.png'
+                            break;
+
+                        case 'zoo':
+                            markerIcon = iconPath + "zoo.png"
+                            break;
+
+                        case 'amusement_park':
+                            markerIcon = iconPath + "amusement-park.png"
+                            break;
+
+                        case 'art_gallery':
+                            markerIcon = iconPath + "art-gallery.png"
+                            break;
+
+                        case 'night_club':
+                            markerIcon = iconPath + "night-club.png"
+                            break;
+
+                        case 'campground':
+                            markerIcon = iconPath + "camp-ground.png"
+                            break;
+
+                        case 'lodging':
+                            markerIcon = iconPath + "hotel.png"
+                            break;
+
+                        case 'restaurant':
+                            markerIcon = iconPath + "restaurant.png"
+                            break;
+
+                        case 'meal_takeaway':
+                            markerIcon = iconPath + "takeaway.png"
+                            break;
+
+                        case 'cafe':
+                            markerIcon = iconPath + "coffee.png"
+                            break;
+
+                        case 'bar':
+                            markerIcon = iconPath + "bar.png"
+                            break;
+
+                        case 'airport':
+                            markerIcon = iconPath + "airport.png"
+                            break;
+
+                        case 'bus_station':
+                            markerIcon = iconPath + "bus.png"
+                            break;
+
+                        case 'train_station':
+                            markerIcon = iconPath + "train.png"
+                            break;
+
+                        case 'car_rental':
+                            markerIcon = iconPath + "carrental.png"
+                            break;
+
+                        default:
+                            console.log("Something went wrong!!");
                     }
-                    else if (selectType == 'zoo') {
-                        markerIcon = iconPath + "zoo.png"
-                    }
-                    else if (selectType == "amusement_park") {
-                        markerIcon = iconPath + "amusement-park.png"
-                    }
-                    else if (selectType == "art_gallery") {
-                        markerIcon = iconPath + "art-gallery.png"
-                    }
-                    else if (selectType == "night_club") {
-                        markerIcon = iconPath + "night-club.png"
-                    }
-                    else if (selectType == "campground") {
-                        markerIcon = iconPath + "camp-ground.png"
-                    }
-                    else if (selectType == "lodging") {
-                        markerIcon = iconPath + "hotel.png"
-                    }
-                    else if (selectType == "restaurant") {
-                        markerIcon = iconPath + "restaurant.png"
-                    }
-                    else if (selectType == "meal_takeaway") {
-                        markerIcon = iconPath + "takeaway.png"
-                    }
-                    else if (selectType == "cafe") {
-                        markerIcon = iconPath + "coffee.png"
-                    }
-                    else if (selectType == "bar") {
-                        markerIcon = iconPath + "bar.png"
-                    }
-                    else if (selectType == "airport") {
-                        markerIcon = iconPath + "airport.png"
-                    }
-                    else if (selectType == "bus_station") {
-                        markerIcon = iconPath + "bus.png"
-                    }
-                    else if (selectType == "train_station") {
-                        markerIcon = iconPath + "train.png"
-                    }
-                    else if (selectType == "car_rental") {
-                        markerIcon = iconPath + "carrental.png"
-                    }
+
+                    // switch ends here 
                     // Use marker animation to drop the icons on the map.
                     markers[i] = new google.maps.Marker({
                         position: results[i].geometry.location,
