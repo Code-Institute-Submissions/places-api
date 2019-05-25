@@ -132,8 +132,6 @@ function search() {
                         default:
                             console.log("Something went wrong!!");
                     }
-
-                    // switch ends here 
                     // Use marker animation to drop the icons on the map.
                     markers[i] = new google.maps.Marker({
                         position: results[i].geometry.location,
@@ -180,14 +178,11 @@ function onPlaceChanged() {
     }
 
     else {
-        /*    $("#selectType").empty();
-         addJson();*/
         document.getElementById("selectType").disabled = true;
         clearMarkers();
         clearResults();
         $('#myModal').modal('show');
         document.getElementById("show-message").innerHTML = ("Your Input Is Not Recogised!   Please Try Again");
-
     }
 }
 
@@ -212,9 +207,11 @@ function addResult(result, i) {
     tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
     tr.onclick = function() {
         google.maps.event.trigger(markers[i], 'click');
+        tr.style.backgroundColor = "#99a0aa";
     };
     var iconTd = document.createElement('td');
     var nameTd = document.createElement('td');
+    nameTd.style.width = "100%";
     var icon = document.createElement('img');
     icon.src = markerIcon;
     icon.setAttribute('class', 'placeIcon');
