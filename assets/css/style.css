@@ -17,7 +17,7 @@
         color: #fff;
         text-align: left;
         font-family: 'Roboto', sans-serif;
-        left: 20px;
+        padding-top: 10px;
     }
 
     /*Search Fields*/
@@ -32,7 +32,7 @@
     #autocomplete {
         font-family: 'Roboto', sans-serif;
         height: 35px;
-        width: auto;
+        width: 100%;
     }
 
     .location-field {
@@ -70,7 +70,6 @@
         padding-left: 15px;
     }
 
- 
 
     #resultsTable {
         display: block;
