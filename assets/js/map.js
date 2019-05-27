@@ -159,9 +159,7 @@ function search() {
         });
     }
 }
-// add listeners so user can browse the map without changing the city 
-document.getElementById("selectType").addEventListener('change', clearMarkers);
-document.getElementById("selectType").addEventListener('change', clearResults);
+
 document.getElementById("selectType").addEventListener('change', search);
 
 function onPlaceChanged() {
@@ -182,7 +180,7 @@ function onPlaceChanged() {
         clearMarkers();
         clearResults();
         $('#myModal').modal('show');
-        document.getElementById("show-message").innerHTML = ("Your Input Is Not Recogised!   Please Try Again");
+        document.getElementById("show-message").innerHTML = ("Please enter a valid city!");
     }
 }
 
