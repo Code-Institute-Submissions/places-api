@@ -40,6 +40,8 @@ This Website is for anyone looking to gather information about places
 - as a visitor, I would like to have a street view option
 - as a visitor, I would like to be able to control the map (zoom, drag, select)
 
+# Wireframes
+	- wireframes have been added for both desktop and mobile displays :)
 
 # Features
 
